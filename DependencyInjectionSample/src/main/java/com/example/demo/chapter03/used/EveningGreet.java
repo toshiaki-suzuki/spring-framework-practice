@@ -7,7 +7,6 @@ public class EveningGreet implements Greet {
 
 	@Override
 	public void greeting() {
-		// TODO 自動生成されたメソッド・スタブ
 		System.out.println("こんばんは");
 	}
 

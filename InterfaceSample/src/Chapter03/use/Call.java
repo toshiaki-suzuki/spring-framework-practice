@@ -6,7 +6,6 @@ import Chapter03.used.Calculator;
 public class Call {
 
 	public static void main(String[] args) {
-		// TODO 自動生成されたメソッド・スタブ
 		Calculator calculator = new AddCalc();
 		Integer result = calculator.calc(10, 5);
 
