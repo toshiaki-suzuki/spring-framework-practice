@@ -32,7 +32,7 @@ public class SpringDataJdbcSampleApplication {
 	
 	private void executeSelect() {
 		System.out.println("---全件取得します---");
-		Iterable<Member> members = repository.findAllById(null);
+		Iterable<Member> members = repository.findAll();
 		for(Member member: members) {
 			System.out.println(member);
 		}
