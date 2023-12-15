@@ -8,5 +8,10 @@
 <body>
 	<h1 th:text="${msg}">表示される部分</h1>
 	<h1>[[${msg}]] インラインで追加</h1>
+	<h1 th:text="${msg} +'を' + '結合しました'">表示される部分</h1>
+	<h1 th:text="|${msg} をリテラル変換しました|">表示される部分</h1>
+	<div th:with="a=1,b=2">
+		<span th:text="|${a} + ${b} = ${a+b}|"></span>
+	</div>
 </body>
 </html>
