@@ -27,25 +27,13 @@ ext {
 }
 
 dependencies {
-	implementation 'org.springframework.boot:spring-boot-starter-batch'
-	implementation 'org.springframework.boot:spring-boot-starter-cache'
-	implementation 'org.springframework.boot:spring-boot-starter-mail'
-	implementation 'org.springframework.boot:spring-boot-starter-quartz'
 	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
 	implementation 'org.springframework.boot:spring-boot-starter-validation'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
-	implementation 'org.springframework.shell:spring-shell-starter'
 	compileOnly 'org.projectlombok:lombok'
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
 	annotationProcessor 'org.projectlombok:lombok'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
-	testImplementation 'org.springframework.batch:spring-batch-test'
-}
-
-dependencyManagement {
-	imports {
-		mavenBom "org.springframework.shell:spring-shell-dependencies:${springShellVersion}"
-	}
 }
 
 tasks.named('test') {
