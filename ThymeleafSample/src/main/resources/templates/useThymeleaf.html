@@ -43,5 +43,21 @@
 	<th:block th:if="${name} == '太郎'">
 		<p>太郎さんです!</p>
 	</th:block>
+	<hr>
+	<!-- 10：switch -->
+	<div th:switch="${name}">
+		<p th:case="太郎" th:text="|${name}です！|"></p>
+		<p th:case="ジロウ" th:text="|${name}です！|"></p>
+		<p th:case="花子" th:text="|${name}です！|"></p>
+		<p th:case="*">名簿にありません</p>
+	</div>
+	<!-- 11：参照（データをまとめたオブジェクト） -->
+	.でアクセス：<span th:text="${mb.id}">ID</span>-<span th:text="${mb.name}">名前</span><br>
+	 []でアクセス：<span th:text="${mb['id']}">ID</span>-<span th:text="${mb['name']}">名前</span><br>
+	<!-- 12：参照（th:object） -->
+	<th:block th:object="${mb}">
+		.でアクセス：<span th:text="*{id}">ID</span>-<span th:text="*{name}">名前</span><br>
+		[]でアクセス：<span th:text="*{['id']}">ID</span>-<span th:text="*{['name']}">名 前</span>
+	</th:block>
 </body>
 </html>
