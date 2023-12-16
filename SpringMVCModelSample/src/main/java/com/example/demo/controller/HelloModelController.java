@@ -14,4 +14,10 @@ public class HelloModelController {
 		model.addAttribute("msg", "タイムリーフ");
 		return "helloThymeleaf";
 	}
+	
+	@GetMapping("use")
+	public String useView(Model model) {
+		return "useThymeleaf";
+	}
+	
 }
