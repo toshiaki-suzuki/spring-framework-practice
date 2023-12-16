@@ -59,5 +59,51 @@
 		.でアクセス：<span th:text="*{id}">ID</span>-<span th:text="*{name}">名前</span><br>
 		[]でアクセス：<span th:text="*{['id']}">ID</span>-<span th:text="*{['name']}">名 前</span>
 	</th:block>
+	<hr>
+	<!-- 13：参照（List） -->
+	<span th:text="${list[0]}">方角</span>
+	<span th:text="${list[1]}">方角</span>
+	<span th:text="${list[2]}">方角</span>
+	<span th:text="${list[3]}">方角</span><br>
+	<!-- 14：参照（Map） -->
+	.でアクセス：<span th:text="${map.tanaka.name}">名前１</span>
+	<span th:text="${map.suzuki.name}">名前２</span><br>
+	[]でアクセス：<span th:text="${map['tanaka']['name']}">名前１：[]でアクセス</span>
+	<span th:text="${map['suzuki']['name']}">名前２：[]でアクセス</span>
+	<!-- 15：繰り返し -->
+	<div th:each="member : ${members}">
+		<p>[[${member.id}]] : [[${member.name}]]</p>
+	</div>
+	<hr>
+	<!-- 16：繰り返しのステータス -->
+	<div th:each="member, s : ${members}" th:object="${member}">
+		<p>
+		index-> [[${s.index}]], count-> [[${s.count}]],
+		size-> [[${s.size}]], current-> [[${s.current}]],
+		even-> [[${s.even}]], odd-> [[${s.odd}]],
+		first-> [[${s.first}]], last-> [[${s.last}]],
+		[[*{id}]] : [[*{name}]]
+		</p>
+	</div>
+	<!-- 17：ユーティリティオブジェクト（数値・日時・文字列） -->
+	<div th:with="x=1000000, y=123456.789">
+		整数のフォーマット:<span th:text="${#numbers.formatInteger(x, 3, 'COMMA')}"></span><br/>
+		浮動小数点のフォーマット:<span th:text="${#numbers.formatDecimal(y, 3, 'COMMA',2, 'POINT')}"></span>
+	</div>
+	<br/>
+	<div th:with="today=${#dates.createNow()}">
+		yyyy/mm/dd形式:<span th:text="${#dates.format(today, 'yyyy/MM/dd')}"></span><br/>
+		yyyy年mm月dd日形式:<span th:text="${#dates.format(today, 'yyyy年MM月dd日')}"></span><br/>
+		yyyy年:<span th:text="${#dates.year(today)}"></span><br/>
+		MM月:<span th:text="${#dates.month(today)}"></span><br/>
+		dd日:<span th:text="${#dates.day(today)}"></span><br/>
+		曜日:<span th:text="${#dates.dayOfWeek(today)}"></span><br/>
+	</div>
+	<br/>
+	<div th:with="str1='abcdef'">
+		大文字変換:<span th:text="${#strings.toUpperCase(str1)}"></span><br/>
+		空文字判定:<span th:text="${#strings.isEmpty(str1)}"></span><br/>
+		長さ:<span th:text="${#strings.length(str1)}"></span><br/>
+	</div>
 </body>
 </html>
