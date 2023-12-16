@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th ="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Thymeleaf Sample</title>
+</head>
+<body>
+	<!-- 01：直接文字を埋め込む -->
+	<h1 th:text="'hello world'">表示する部分</h1>
+	<!-- 02：インライン処理 -->
+	<h1>こんにちは！[[${name}]]さん</h1>
+	<!-- 03：値結合 -->
+	<h1 th:text="'明日は、' + '晴れ' + 'です。'">表示する部分</h1>
+	
+	<hr>
+	<!-- 04：値結合(リテラル置換) -->
+	<h1 th:text="|こんにちは！${name}さん|">表示する部分</h1>
+	<!-- 05：ローカル変数 -->
+	<div th:with="a=1,b=2">
+		<span th:text="|${a} + ${b} = ${a+b}|"></span>
+	</div>
+	<!-- 06：比較と等価 -->
+	<span th:text="1 > 10"></span>
+	<span th:text="1 < 10"></span>
+	<span th:text="1 >= 10"></span>
+	<span th:text="1 <= 10"></span>
+	<span th:text="1 == 10"></span>
+	<span th:text="1 != 10"></span>
+	<span th:text="太郎 == 太郎"></span>
+	<span th:text="太郎 != 太郎"></span>
+	<hr>
+	<!-- 07：条件演算子 -->
+	<p th:text="${name} == '太郎'? '太郎さんです！':'太郎さんではありません。'"></p>
+	<!-- 08：条件分岐（true） -->
+	<div th:if="${name} == '太郎'">
+		<p>太郎さんです!</p>
+	</div>
+	<!-- 09：条件分岐（false） -->
+	<div th:unless="${name} == '花子'">
+		<p>花子さんではありません。</p>
+	</div>
+	<!-- 08：条件分岐（true） -->
+	<th:block th:if="${name} == '太郎'">
+		<p>太郎さんです!</p>
+	</th:block>
+</body>
+</html>
