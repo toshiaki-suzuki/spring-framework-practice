@@ -24,11 +24,13 @@ public class QuizApplication {
 		// 登録処理
 //		setup();
 		// 全件取得
-//		showList();
+		showList();
 		// 一件取得
 //		showOne();
 		// 更新処理
-		updateQuiz();
+//		updateQuiz();
+		// 削除処理
+//		deleteQuiz();
 	}
 	/** === クイズを2件登録します === */
 	private void setup() {
@@ -79,5 +81,12 @@ public class QuizApplication {
 		// 更新確認
 		System.out.println("更新したデータは、" + quiz1 + "です。");
 		System.out.println("--- 更新処理完了 ---");
+	}
+	/** === 削除処理 === */
+	private void deleteQuiz() {
+		System.out.println("--- 削除処理開始 ---");
+		// 削除実行
+		repository.deleteById(2);
+		System.out.println("--- 削除処理完了 ---");
 	}
 }
