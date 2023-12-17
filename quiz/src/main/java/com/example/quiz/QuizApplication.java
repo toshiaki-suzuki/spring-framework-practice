@@ -1,5 +1,7 @@
 package com.example.quiz;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -20,7 +22,11 @@ public class QuizApplication {
 	/** 実行メソッド */
 	private void execute() {
 		// 登録処理
-		setup();
+//		setup();
+		// 全件取得
+//		showList();
+		// 一件取得
+		showOne();
 	}
 	/** === クイズを2件登録します === */
 	private void setup() {
@@ -37,5 +43,28 @@ public class QuizApplication {
 		quiz2 = repository.save(quiz2);
 		// 登録確認
 		System.out.println("登録したデータは、" + quiz2 + "です。");
+	}
+	/** === 全件取得 === */
+	private void showList() {
+		System.out.println("--- 全件取得開始 ---");
+		// リポジトリを使用して全件取得を実施、結果を取得
+		Iterable<Quiz> quizzes = repository.findAll();
+		for (Quiz quiz : quizzes) {
+			System.out.println(quiz);
+		}
+		System.out.println("--- 全件取得完了 ---");
+	}
+	/** === １件取得 === */
+	private void showOne() {
+		System.out.println("--- １件取得開始 ---");
+		// リポジトリを使用して１件取得を実施、結果を取得（戻り値はOptional）
+		Optional<Quiz> quizOpt = repository.findById(1);
+		// 値存在チェック
+		if (quizOpt.isPresent()) {
+			System.out.println(quizOpt.get());
+		} else {
+			System.out.println("該当する問題が存在しません・・・");
+		}
+		System.out.println("--- １件取得完了 ---");
 	}
 }
